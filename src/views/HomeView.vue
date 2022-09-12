@@ -3,7 +3,7 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <form class="d-flex" @submit="addNewTodo">
+        <form class="d-flex" @submit.prevent="addNewTodo">
           <div class="col-8">
             <div class="mb-3">
               <label for="" class="form-label">New Todo</label>
@@ -14,11 +14,12 @@
                 class="form-control"
                 placeholder="Add new Todo"
                 aria-describedby="helpId"
+                v-model = "newTod"
               />
             </div>
           </div>
           <div class="col-4 text-center">
-            <button type="button" class="btn btn-primary mt-4">Add New Todo </button>
+            <button type="submit" class="btn btn-primary mt-4">Add New Todo </button>
           </div>
         </form>
       </div>
@@ -27,9 +28,22 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+  import {ref} from 'vue'
+export default {
+setup() {
+  const newTod = ref('');
+  function addNewTodo() {
+    console.log(newTod.value)
+  }
 
-export default defineComponent({});
+  return {
+    newTod,
+    addNewTodo,
+  }
+
+}
+
+};
 </script>
 
 <style lang="scss" scoped></style>
