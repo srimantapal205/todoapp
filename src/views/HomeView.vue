@@ -45,8 +45,8 @@
                   {{ todo.content }}
                 </h3>
               </div>
-              <div class="col-3">
-                <button type="button" class="btn btn-danger" @click="removeTodo(index)">
+              <div class="col-3 text-end">
+                <button type="button" :disabled="todo.done===false" class="btn btn-danger" @click="removeTodo(index)">
                   Remove
                 </button>
               </div>
